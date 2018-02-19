@@ -23,7 +23,8 @@ public class ChatGUI extends JFrame implements ActionListener{
 		super();
 		init();
 		config();
-		
+
+		// Lanzo la escucha infinita del host en un hilo aparte
 		new Thread(new Runnable(){
 
 			@Override
@@ -50,6 +51,7 @@ public class ChatGUI extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
 		
+		// Al cerrarse el frame se cierra el host
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 		    public void windowClosing(WindowEvent e){
@@ -89,11 +91,11 @@ public class ChatGUI extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-		
+
+		// Esto es obvio
 		if(e.getSource().equals(b_send)){
 			host.sendMessage(username + ":\t" + t_message.getText());
 			t_message.setText("");
-			
 		}
 		
 	}
