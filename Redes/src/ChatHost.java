@@ -11,6 +11,7 @@ public class ChatHost{
 	private MulticastSocket socket;
 	private JTextArea t_history; 
 	
+	// Recibe el textarea del chat
 	public ChatHost(JTextArea t_history){
 		try{
 			this.t_history = t_history;
@@ -23,7 +24,7 @@ public class ChatHost{
 		
 	}
 	
-	
+	// Envia el mensaje a todos los miembros
 	public void sendMessage(String message){
 		try{
 			byte[] bytes = message.getBytes();
@@ -33,6 +34,7 @@ public class ChatHost{
 		catch(Exception e){e.printStackTrace();}
 	}
 	
+	// Escucha infinita
 	public void startListening(){
 		try{
 			byte[] bufer = new byte[1000];
@@ -52,7 +54,7 @@ public class ChatHost{
 		catch(Exception e){e.printStackTrace();}
 	}
 	
-	
+	// Obvio
 	public void closeChat(){
 		try {
 			socket.leaveGroup(grupo);
